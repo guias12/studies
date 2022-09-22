@@ -1,0 +1,7 @@
+<div class="container">
+  <div *ngIf="canShow">This should appear</div>
+  <div *ngIf="name === 'John'; else nameIsNotJohn">
+    This should appear only if name is John
+  </div>
+  <ng-template #nameIsNotJohn> The name defined was not John </ng-template>
+</div>
