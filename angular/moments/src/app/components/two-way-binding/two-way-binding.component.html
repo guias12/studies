@@ -1,0 +1,13 @@
+<div class="container">
+  <h2>Two way data binding</h2>
+  <form>
+    <input
+      type="text"
+      [(ngModel)]="myName"
+      name="name"
+      placeholder="Digite seu nome"
+    />
+    <input type="submit" value="Enviar" />
+  </form>
+  {{ myName }}
+</div>

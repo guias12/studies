@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { ListService } from '../../service/list.service';
 
 interface Animal {
   name: string;
   type: string;
+  id: number;
 }
 
 @Component({
@@ -17,14 +19,20 @@ export class DirectivesComponent implements OnInit {
 
   classes = ['first-class', 'second-class'];
 
-  animals: Animal[] = [
-    { name: 'Mike', type: 'Rooster' },
-    { name: 'Foo', type: 'Dog' },
-    { name: 'Bar', type: 'Cat' },
-    { name: 'Baz', type: 'Horse' },
-  ];
+  animals: Animal[] = [];
 
-  constructor() {}
+  constructor(private listService: ListService) {
+    this.getAnimals();
+  }
+
+  removeAnimal(animal: Animal) {
+    this.animals = this.animals.filter((a) => a.name !== animal.name);
+    this.listService.remove(animal.id).subscribe();
+  }
 
   ngOnInit(): void {}
+
+  getAnimals(): void {
+    this.listService.getAll().subscribe((animals) => (this.animals = animals));
+  }
 }
