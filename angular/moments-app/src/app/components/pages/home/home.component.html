@@ -1,1 +1,30 @@
-<h2>Home page</h2>
+<div class="home-container">
+  <h1>See what's being shared</h1>
+  <div class="search-container">
+    <form action="">
+      <fa-icon [icon]="faSearch"></fa-icon>
+      <input
+        type="text"
+        placeholder="Search for a moment"
+        (input)="search($event)"
+      />
+    </form>
+  </div>
+  <div *ngIf="filteredMoments.length > 0; else noMoments">
+    <div class="moments-container">
+      <div class="moment" *ngFor="let moment of filteredMoments">
+        <h3>{{ moment.title }}</h3>
+        <img
+          src="{{ baseApiUrl }}/uploads/{{ moment.image }}"
+          alt="{{ moment.title }}"
+        />
+        <p class="date">{{ moment.created_at }}</p>
+        <p>Comments: {{ moment.comments }}</p>
+        <p><a routerLink="moments/{{ moment.id }}">See Details</a></p>
+      </div>
+    </div>
+  </div>
+  <ng-template #noMoments>
+    <h1>There's not registered moments yet :(</h1>
+  </ng-template>
+</div>
