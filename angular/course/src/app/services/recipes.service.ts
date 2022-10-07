@@ -11,7 +11,7 @@ export class RecipesService {
     new Recipe(
       'Cheeseburger',
       'Burger with cheese',
-      'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg',
+      'https://s7d1.scene7.com/is/image/mcdonalds/t-mcdonalds-Cheeseburger-1:1-3-product-tile-desktop?wid=829&hei=515&dpr=off',
       [new Ingredient('Meat', 1), new Ingredient('Bread', 2)]
     ),
     new Recipe(
@@ -30,5 +30,9 @@ export class RecipesService {
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
     this.shoppingListService.addIngredients(ingredients);
+  }
+
+  getRecipe(index: number) {
+    return this.recipes[index];
   }
 }
