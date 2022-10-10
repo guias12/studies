@@ -9,7 +9,7 @@ export class AppComponent {
   title = 'course';
   loadedPage: string = 'recipe';
 
-  onNavigate(page: string) {
+  /*onNavigate(page: string) {
     this.loadedPage = page;
-  }
+  }*/
 }
