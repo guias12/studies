@@ -11,7 +11,7 @@ export class RecipesService {
   recipesChanged = new Subject<Recipe[]>();
 
   private recipes: Recipe[] = [
-    new Recipe(
+    /*new Recipe(
       'Cheeseburger',
       'Burger with cheese',
       'https://s7d1.scene7.com/is/image/mcdonalds/t-mcdonalds-Cheeseburger-1:1-3-product-tile-desktop?wid=829&hei=515&dpr=off',
@@ -22,13 +22,18 @@ export class RecipesService {
       'White rice with seasoning',
       'https://img.itdg.com.br/tdg/images/recipes/000/000/770/323683/323683_original.jpg?w=1200',
       [new Ingredient('Rice', 1), new Ingredient('Alho', 2)]
-    ),
+    ),*/
   ];
 
   constructor(private shoppingListService: ShoppingListService) {}
 
   getRecipes() {
     return this.recipes.slice();
+  }
+
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.recipesChanged.next(this.recipes.slice());
   }
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
